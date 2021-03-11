@@ -1,0 +1,23 @@
+﻿@model Entities.Category
+
+@{
+    ViewBag.Title = "Detail";
+}
+<div class="container-fluid">
+    <div class="row position-relative">
+        <div class="col">
+            <img src="~/Uploads/CategoryImg/@Model.CategoryImg" />
+            <h2 class="position-absolute fixed-bottom text-white">@Model.Name</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.CategoryContent)
+        </dd>
+
+    </dl>
+</div>

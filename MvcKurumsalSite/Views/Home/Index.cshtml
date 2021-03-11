@@ -1,0 +1,196 @@
+﻿@model MvcKurumsalSite.Models.HomePageVM
+@{
+    ViewBag.Title = "Home Page";
+    string aktif;
+}
+<div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+
+        @foreach (var item in Model.Slide)
+        {
+            //if (item == Model.First()) { aktif = "active"; }
+            //else { aktif = ""; }
+            @(item == Model.Slide.First() ? aktif = "active" : aktif = "")
+            <div class="carousel-item @aktif">
+                <img src="~/Uploads/SlideImg/@item.SlideImg" class="d-block w-100" />
+            </div>
+        }
+
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container">
+
+    <section class="cozumlerimiz text-center p-5">
+
+        @foreach (var item in Model.Categories.Where(i => i.ParentId == 0))
+        {
+            <h2>
+                @item.Name
+            </h2>
+            <p>@item.CategoryContent</p>
+            <div class="row position-relative">
+                @foreach (var subcat in Model.Categories.Where(i =>
+                i.ParentId == item.Id))
+                {
+                    <div class="col">
+                        <img src="~/Uploads/CategoryImg/@subcat.CategoryImg" />
+                        <b class="position-absolute fixed-bottom text-white">@subcat.Name</b>
+                    </div>
+                }
+            </div>
+        }
+        <h2>
+            Çözümlerimiz
+        </h2>
+        <p>Sizi 1987’den beri lider firmaların tercihi olan Görhan’ın hizmet alanları ile tanışmaya davet ediyoruz.</p>
+        <div class="row position-relative">
+            <div class="col">
+                <img src="~/Img/cozum1.jpeg" />
+                <b class="position-absolute fixed-bottom text-white">KONUT</b>
+            </div>
+            <div class="col">
+                <img src="~/Img/cozum2.jpeg" />
+                <b class="position-absolute fixed-bottom text-white">OTEL</b>
+            </div>
+            <div class="col">
+                <img src="~/Img/cozum3.jpeg" />
+                <b class="position-absolute fixed-bottom text-white">OFİS</b>
+            </div>
+            <div class="col">
+                <img src="~/Img/cozum4.jpeg" />
+                <b class="position-absolute fixed-bottom text-white">OKUL</b>
+            </div>
+            @*<div class="col">
+                    <img src="~/Img/cozum5.jpg" />
+                    <b class="position-absolute fixed-bottom text-white">BANKA</b>
+                </div>
+                <div class="col">
+                    <img src="~/Img/cozum6.jpg" />
+                    <b class="position-absolute fixed-bottom text-white">HASTANE</b>
+                </div>
+                <div class="col">
+                    <img src="~/Img/cozum7.jpg" />
+                    <b class="position-absolute fixed-bottom text-white">YURT</b>
+                </div>*@
+        </div>
+    </section>
+
+
+
+    <section class="text-center p-5">
+        <h2>
+            Global Hizmet
+        </h2>
+        <p>
+            Türkiye'de 300'ün üzerinde projenin haricinde bir çok ülkede ekibimizle hızlı ve güvenilir ürünler üretiyoruz.
+        </p>
+        <div class="container">
+            <img src="~/Img/global-bg.png" class="img-fluid" />
+        </div>
+    </section>
+
+    <section class="text-center p-5">
+        <h2>
+            Bizi Tercih Edenler
+        </h2>
+        <p>
+            Türkiye'de 300'ün üzerinde projenin haricinde bir çok ülkede ekibimizle hızlı ve güvenilir ürünler üretiyoruz.
+        </p>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="~/Img/5a0ec8de6d5b9_Agaoglu-logo-6562119397-seeklogo.com.png" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5a4350690090c.png" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5a0ec9758c101_thumbs_trump-tower-logo.png" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5b5859b3f0f00.jpg" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5a0ec98f9af4b_coca-cola-logo.png" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5a0ec99a7e4cd_enka.png" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5b582f0c5b74a.jpg" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/Img/5b585a80eb193.png" />
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center p-5">
+        <h2>
+            Son Projelerimiz
+        </h2>
+        <p>
+            Gerçekleştirdiğimiz son projelerimiz ile lüks ve ayrıcalıklı yaşam alanlarına hizmet.
+        </p>
+        <div class="card-columns">
+            <div class="card">
+                <img src="~/Img/kulliye.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">KÜLLİYE</h5>
+                    <p class="card-text">HER TÜRLÜ KÜLLİYE İŞİ İTİNAYLA YAPILIR.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Img/sonproje2.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">PROJE 2</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+            <div class="card text-center">
+                <img src="~/Img/sonproje3.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">PROJE 3</h5>
+                    <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Img/kulliye.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">KÜLLİYE</h5>
+                    <p class="card-text">HER TÜRLÜ KÜLLİYE İŞİ İTİNAYLA YAPILIR.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Img/sonproje2.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">PROJE 5</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+            <div class="card text-center">
+                <img src="~/Img/sonproje3.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">PROJE 6</h5>
+                    <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

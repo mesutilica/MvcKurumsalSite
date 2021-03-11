@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Entities.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kategoriler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ekle", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHomePage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryImg)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHomePage)
+            </td>
+            <td>
+                @if (!(item.CategoryImg is null))
+                {
+                    <img src="~/Uploads/CategoryImg/@Html.DisplayFor(modelItem => item.CategoryImg)" alt="Resim yok" height="30" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

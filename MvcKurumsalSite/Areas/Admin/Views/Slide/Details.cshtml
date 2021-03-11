@@ -1,0 +1,26 @@
+﻿@model Entities.Slide
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Slide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SlideImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlideImg)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

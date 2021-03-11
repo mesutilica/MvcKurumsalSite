@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Entities.Category>
+
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<div class="container">
+    <section class="cozumlerimiz text-center p-5">
+        <h2>
+            Çözümlerimiz
+        </h2>
+        <p>Sizi 1987’den beri lider firmaların tercihi olan Görhan’ın hizmet alanları ile tanışmaya davet ediyoruz.</p>
+        <div class="row position-relative">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <a href="/Category/Detail/@item.Id">
+                        <img src="~/Uploads/CategoryImg/@item.CategoryImg" />
+                        <b class="position-absolute fixed-bottom text-white">@item.Name</b>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
+</div>

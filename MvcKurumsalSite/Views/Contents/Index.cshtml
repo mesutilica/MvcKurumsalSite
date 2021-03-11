@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Entities.Content>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="text-center p-5">
+    <h2>
+        Son Projelerimiz
+    </h2>
+    <p>
+        Gerçekleştirdiğimiz son projelerimiz ile lüks ve ayrıcalıklı yaşam alanlarına hizmet.
+    </p>
+    <div class="card-columns">
+        @foreach (var item in Model)
+        {
+            <div class="card text-center">
+                <img src="~/Uploads/ContentImg/@item.ContentImg" class="card-img-top" alt="@item.Name" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    <p class="card-text"><small class="text-muted">@item.CreateDate</small></p>
+                </div>
+            </div>
+        }
+    </div>
+</section>

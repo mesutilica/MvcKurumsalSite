@@ -1,0 +1,42 @@
+﻿@{
+    if (Session["AdminUser"] == null)
+    {
+        Response.Redirect("~/Admin/Login");
+    }
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href=".">
+        YÖNETİM PANELİ
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/Category">Kategori Yönetimi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/Slide">Slider Yönetimi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/Content">İçerik Yönetimi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/User">Kullanıcı Yönetimi</a>
+            </li>
+        </ul>
+        @{
+            if (Session["AdminUser"] != null)
+            {
+                var kullanici = Session["AdminUser"] as Entities.User;
+                
+                <a href="#" class="pr-3">Hoşgeldin @kullanici.UserName</a>
+            }
+        }
+        |
+        <a href="/" target="_blank" class="pl-3">Siteyi Görüntüle</a>
+    </div>
+</nav>
